@@ -1,0 +1,10 @@
+#ignore node 套件
+node_modules/
+
+resourceAllCode/
+resourceCheckCodeScript/
+resourceOfficialDefinition/
+
+resourceValueSet/
+
+testDeepNested.js
