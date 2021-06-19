@@ -15,7 +15,7 @@ function generateCheckScript() {
         let checkScript = `
         const _  = require("lodash");
         const { handleError } = require("../../../models/FHIR/httpMessage")
-        const codeList = require('./Immunization.code.refresh.json');\r\n
+        const codeList = require('./${resource}.code.refresh.json');\r\n
         `;
         for (let path in codeList) {
             let fieldDef = defList.filter(v=> path.includes(v.path))
