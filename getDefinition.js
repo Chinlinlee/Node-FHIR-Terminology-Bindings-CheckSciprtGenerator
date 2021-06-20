@@ -9,7 +9,6 @@ const { getDeepKeys } = require('./myFunc');
 async function getDefinition () {
     for (let resource of resources) {
         let myDefs = [];
-        //let resource = "Immunization";
         let definitionFetch = await fetch(`https://www.hl7.org/fhir/${resource}.profile.json`)
         let definitionJson = await definitionFetch.json();
         for (let element of definitionJson.snapshot.element) {

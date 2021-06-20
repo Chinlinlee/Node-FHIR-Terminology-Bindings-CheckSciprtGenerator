@@ -11,7 +11,9 @@ function refreshValueSetCode () {
         let codeList = require(`./resourceAllCode/${resource}.code.json`);
         let allPath = _(codeList).groupBy("path").value();
         let allPathClean = {};
-        console.log(Object.keys(allPath).sort());
+        let allPathSortedKeys = Object.keys(allPath).sort();
+        let firstKey =  allPathSortedKeys[0];
+        allPathClean[firstKey] = allPath[firstKey];
         Object.keys(allPath).sort().reduce(function (a, b) {
             if (b.includes(a)) {
                 allPathClean[a] = allPath[a].concat(allPath[b]);
@@ -21,7 +23,6 @@ function refreshValueSetCode () {
             }
             return b;
         });
-        console.log(allPathClean["protocolApplied.targetDisease.coding"])
         fs.writeFileSync(`./resourceAllCode/${resource}.code.refresh.json` , JSON.stringify(allPathClean , null , 4));
     }
 }
@@ -29,3 +30,5 @@ function refreshValueSetCode () {
 module.exports = {
     refreshValueSetCode : refreshValueSetCode
 }
+
+refreshValueSetCode()
